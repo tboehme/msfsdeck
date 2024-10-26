@@ -3,7 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <OutputType>Library</OutputType>
+    <Nullable>warnings</Nullable>
     <RootNamespace>Loupedeck.MsfsPlugin</RootNamespace>
     <FileAlignment>512</FileAlignment>
     <ErrorReport>prompt</ErrorReport>
@@ -17,24 +18,59 @@
 
     <PluginDir Condition="$(OS) == 'Windows_NT'">$(LocalAppData)\Logi\LogiPluginService\Plugins\</PluginDir>
     <PluginDir Condition="$(OS) != 'Windows_NT'">~/Library/Application\ Support/Logi/LogiPluginService/Plugins/</PluginDir>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+
   <ItemGroup>
+    <EmbeddedResource Include="Resources\16.png" />
+    <EmbeddedResource Include="Resources\256.png" />
+    <EmbeddedResource Include="Resources\32.png" />
+    <EmbeddedResource Include="Resources\48.png" />
+    <EmbeddedResource Include="Resources\available.png" />
+    <EmbeddedResource Include="Resources\availableBorder.png" />
+    <EmbeddedResource Include="Resources\availableFull.png" />
+    <EmbeddedResource Include="Resources\disable.png" />
+    <EmbeddedResource Include="Resources\disableBorder.png" />
+    <EmbeddedResource Include="Resources\disableFull.png" />
+    <EmbeddedResource Include="Resources\disconnect.png" />
+    <EmbeddedResource Include="Resources\disconnectFull.png" />
+    <EmbeddedResource Include="Resources\off.png" />
+    <EmbeddedResource Include="Resources\offFull.png" />
+    <EmbeddedResource Include="Resources\on.png" />
+    <EmbeddedResource Include="Resources\onBorder.png" />
+    <EmbeddedResource Include="Resources\onFull.png" />
+    <EmbeddedResource Include="Resources\trying.png" />
+    <EmbeddedResource Include="Resources\tryingFull.png" />
+    <EmbeddedResource Include="Resources\wait.png" />
+    <EmbeddedResource Include="Resources\waitFull.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.FlightSimulator.SimConnect">
+      <HintPath>Resources\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PluginApi">
       <HintPath>$(PluginApiDir)PluginApi.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.FlightSimulator.SimConnect, Version=10.0.61259.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\MSFS SDK\SimConnect SDK\lib\managed\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=4.0.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.4.0.1\lib\net462\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework.legacy, Version=4.0.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.4.0.1\lib\net462\nunit.framework.legacy.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Resources\Microsoft.FlightSimulator.SimConnect.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
  
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
