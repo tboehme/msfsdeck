@@ -2,11 +2,7 @@
 {
     using System;
 
-    using Microsoft.FlightSimulator.SimConnect;
-
     using static DataTransferTypes;
-
-    using SimType = Microsoft.FlightSimulator.SimConnect.SIMCONNECT_DATATYPE;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0049:Simplify Names", Justification = "<Pending>")]
     internal static class DataTransferIn

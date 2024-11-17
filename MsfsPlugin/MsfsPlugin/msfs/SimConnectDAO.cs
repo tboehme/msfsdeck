@@ -5,34 +5,31 @@
 
     using Loupedeck.MsfsPlugin.tools;
 
-    using Microsoft.FlightSimulator.SimConnect;
-
-    using static DataTransferTypes;
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0049:Simplify Names", Justification = "<Pending>")]
     public class SimConnectDAO
     {
+        private bool _simConnectConnected = false;
+
+        private static readonly System.Timers.Timer timer = new System.Timers.Timer();
+
+        private const double timerInterval = 200;
+        private enum DATA_REQUESTS
+        {
+            REQUEST_1
+        }
+
+        private readonly Binding connection;
+        private readonly Binding autoTaxi;
+
         private SimConnectDAO()
         {
             connection = MsfsData.Instance.Register(BindingKeys.CONNECTION);
             autoTaxi = MsfsData.Instance.Register(BindingKeys.AUTO_TAXI);
         }
 
-        private static readonly Lazy<SimConnectDAO> lazy = new Lazy<SimConnectDAO>(() => new SimConnectDAO());
-
-        public static SimConnectDAO Instance => lazy.Value;
-
-        public const Int32 WM_USER_SIMCONNECT = 0x0402;
-
-        public enum hSimconnect : int
+        public static void Refresh(Object source, EventArgs e)
         {
-            group1
+
         }
-
-        public static void Refresh(Object source, EventArgs e) => Instance.OnTick();
-
-        public void setPlugin(Plugin plugin) => DataTransferOut.setPlugin(plugin);
-
         public void Connect()
         {
             if (connection.MsfsValue == 0)
@@ -46,13 +43,13 @@
                 MsfsData.Instance.Changed();
                 try
                 {
-                    m_oSimConnect = new SimConnect("MSFS Plugin", new IntPtr(0), WM_USER_SIMCONNECT, null, 0);
-                    m_oSimConnect.OnRecvOpen += new SimConnect.RecvOpenEventHandler(SimConnect_OnRecvOpen);
-                    m_oSimConnect.OnRecvSimobjectDataBytype += new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
-                    m_oSimConnect.OnRecvException += new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
+                    SimConnectWrapper.Instance.Connect();
 
-                    DataTransferIn.AddRequest(m_oSimConnect);
-                    DataTransferOut.initEvents(m_oSimConnect);
+                    DataTransferIn.AddRequest();
+
+                    DataTransferOut.setPlugin(MsfsData.Instance.plugin);
+                    DataTransferOut.initEvents();
+
 
                     lock (timer)
                     {
@@ -75,23 +72,13 @@
             }
         }
         public bool IsSimConnectConnected() => _simConnectConnected;
-
-        private void SimConnect_OnRecvException(SimConnect sender, SIMCONNECT_RECV_EXCEPTION data)
-        {
-
-            SIMCONNECT_EXCEPTION eException = (SIMCONNECT_EXCEPTION)data.dwException;
-            DebugTracing.Trace(eException.ToString());
-        }
-
+        
         public void Disconnect(bool unloading = false)
         {
             DebugTracing.Trace($"Disconnecting - unloading={unloading}");
-            if (m_oSimConnect != null)
-            {
-                m_oSimConnect.Dispose();
-                m_oSimConnect = null;
-                _simConnectConnected = false;
-            }
+            SimConnectWrapper.Instance.Disconnect();
+            _simConnectConnected = false;
+            
 
             if (unloading)
                 return;
@@ -187,20 +174,6 @@
             }
         }
 
-        private SimConnect m_oSimConnect = null;
 
-        private bool _simConnectConnected = false;
-
-        private static readonly System.Timers.Timer timer = new System.Timers.Timer();
-
-        private const double timerInterval = 200;
-
-        private enum DATA_REQUESTS
-        {
-            REQUEST_1
-        }
-
-        private readonly Binding connection;
-        private readonly Binding autoTaxi;
     }
 }

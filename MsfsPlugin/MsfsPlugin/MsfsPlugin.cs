@@ -1,5 +1,8 @@
 namespace Loupedeck.MsfsPlugin
 {
+    using System.Reflection;
+    using System.Runtime.Loader;
+
     using Loupedeck.MsfsPlugin.msfs;
 
     // This class contains the plugin-level logic of the Loupedeck plugin.
@@ -36,7 +39,7 @@ namespace Loupedeck.MsfsPlugin
         // This method is called when the plugin is unloaded.
         public override void Unload()
         {
-            SimConnectDAO.Instance.Disconnect(true);
+            SimConnectWrapper.Instance.Disconnect();
         }
     }
 }
