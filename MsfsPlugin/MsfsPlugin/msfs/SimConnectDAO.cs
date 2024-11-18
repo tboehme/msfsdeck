@@ -40,7 +40,8 @@
                     if (SimConnectWrapper.Instance.IsConnected())
                     {
                         connection.SetMsfsValue(1);
-                        DataTransferIn.ReadMsfsValues(SimConnectWrapper.Instance.requestData());
+                        //DataTransferIn.ReadMsfsValues(SimConnectWrapper.Instance.requestData());
+                        DataTransferOut.SendEvents(SimConnectWrapper.Instance);
                         MsfsData.Instance.Changed();
                     }
                     else
