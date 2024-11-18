@@ -1,4 +1,5 @@
 ﻿using System;
+using static SimConnectWrapper.DataTransferTypes;
 
 namespace SimConnectWrapper
 {
@@ -6,9 +7,13 @@ namespace SimConnectWrapper
     {
         void Connect();
 
-        bool IsConnect();
+        bool IsConnected();
 
         void send(Enum eventName, UInt32 value);
+
+        void register(Enum eventName, string key);
+
+        Readers requestData();
 
         void Disconnect(bool unloading = false);
     }

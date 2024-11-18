@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using System.Reflection.Metadata.Ecma335;
     using System.Runtime.Loader;
     using System.Text;
     using System.Threading.Tasks;
@@ -18,30 +19,24 @@
         public SimConnectWrapper()
         {
             var context = new AssemblyLoadContext("MSFSContext");
-            var assembly = context.LoadFromAssemblyPath("SimConnectWrapper.dll");
-            context.LoadFromAssemblyPath("Microsoft.FlightSimulator.SimConnect.dll");
-
+            var assembly = context.LoadFromAssemblyPath("C:\\Users\\calib\\source\\repos\\msfsdeck\\bin\\Debug\\SimConnectWrapper.dll");
+            context.LoadFromAssemblyPath("C:\\Users\\calib\\OneDrive\\Downloads\\Logi_Plugin_Tool_Win_6_0_1_20790_ccd09903f8\\LogiPluginSdkTools\\TestDLLPlugin\\bin\\Debug\\Microsoft.FlightSimulator.SimConnect.dll");
+            
             Type assemblyType = assembly.GetType("SimConnectWrapper.SimConnectWrapper");
 
             if (assemblyType != null)
             {
                 var argTypes = Array.Empty<Type>();
-
                 ConstructorInfo cInfo = assemblyType.GetConstructor(argTypes);
-
                 simWrapper = cInfo.Invoke(null);
-
-                PluginLog.Info($"Connected :  {(bool)simWrapper.InvokeMethod("IsConnect")}");
-                simWrapper.InvokeMethod("Connect");
-                PluginLog.Info($"Connected :  {(bool)simWrapper.InvokeMethod("IsConnect")}");
             }
         }
 
-        public void Connect() => throw new NotImplementedException();
-        public void Disconnect(bool unloading = false) => throw new NotImplementedException();
-        public bool IsConnect() => throw new NotImplementedException();
-        public void send(Enum eventName, uint value) => throw new NotImplementedException();
-        public void write(Enum eventName, uint value) => throw new NotImplementedException();
-        public void register(Enum eventName, string key) => throw new NotImplementedException();
+        public void Connect() => simWrapper.InvokeMethod("Connect");
+        public void Disconnect(bool unloading = false) => simWrapper.InvokeMethod("Disconnect");
+        public void send(Enum eventName, uint value) => simWrapper.InvokeMethod("send", [eventName, value]);
+        public void register(Enum eventName, string key) => simWrapper.InvokeMethod("register", [eventName, key]);
+        public bool IsConnected() => (bool)simWrapper.InvokeMethod("IsConnected");
+        public DataTransferTypes.Readers requestData() => (DataTransferTypes.Readers) simWrapper.InvokeMethod("requestData");
     }
 }

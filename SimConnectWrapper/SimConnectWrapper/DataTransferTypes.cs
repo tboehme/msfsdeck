@@ -1,4 +1,4 @@
-﻿namespace Loupedeck.MsfsPlugin.msfs
+﻿namespace SimConnectWrapper
 {
     using System;
     using System.Runtime.InteropServices;
