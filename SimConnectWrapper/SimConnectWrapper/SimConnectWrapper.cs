@@ -102,8 +102,6 @@ namespace SimConnectWrapper
             datas = (Readers)data.dwData[0];
         }
 
-        public Readers requestData() => datas;
-
         public void send(Enum eventName, uint value)
         {
             m_oSimConnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, eventName, value, hSimconnect.group1, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
@@ -116,7 +114,12 @@ namespace SimConnectWrapper
             m_oSimConnect.MapClientEventToSimEvent(eventName, key);
         }
 
+        public string getString(string key) => (string)datas.GetType().GetField(key).GetValue(datas);
 
+        public long getLong(string key) => (long)datas.GetType().GetField(key).GetValue(datas);
+
+        public double getDouble(string key) => (double)datas.GetType().GetField(key).GetValue(datas);
+  
         private void AddRequest()
         {
             void AddReaderDef(string name, string units, SimType type) => AddToDataDefinition(DEFINITIONS.Readers, name, units, type);
@@ -261,6 +264,7 @@ namespace SimConnectWrapper
             m_oSimConnect.RegisterDataDefineStruct<Readers>(DEFINITIONS.Readers);
             m_oSimConnect.RegisterDataDefineStruct<Writers>(DEFINITIONS.Writers);
         }
+
 
     }
 }

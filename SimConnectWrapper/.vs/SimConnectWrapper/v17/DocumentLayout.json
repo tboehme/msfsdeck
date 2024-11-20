@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{DB485A73-E205-43D0-851E-908E8FEB3006}|SimConnectWrapper\\SimConnectWrapper.csproj|solutionrelative:simconnectwrapper\\simconnectwrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB485A73-E205-43D0-851E-908E8FEB3006}|SimConnectWrapper\\SimConnectWrapper.csproj|c:\\users\\calib\\source\\repos\\msfsdeck\\simconnectwrapper\\simconnectwrapper\\isimconnectwrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB485A73-E205-43D0-851E-908E8FEB3006}|SimConnectWrapper\\SimConnectWrapper.csproj|solutionrelative:simconnectwrapper\\isimconnectwrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DB485A73-E205-43D0-851E-908E8FEB3006}|SimConnectWrapper\\SimConnectWrapper.csproj|c:\\users\\calib\\source\\repos\\msfsdeck\\simconnectwrapper\\simconnectwrapper\\datatransfertypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DB485A73-E205-43D0-851E-908E8FEB3006}|SimConnectWrapper\\SimConnectWrapper.csproj|solutionrelative:simconnectwrapper\\datatransfertypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB485A73-E205-43D0-851E-908E8FEB3006}|SimConnectWrapper\\SimConnectWrapper.csproj|c:\\users\\calib\\source\\repos\\msfsdeck\\simconnectwrapper\\simconnectwrapper\\isimconnectwrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB485A73-E205-43D0-851E-908E8FEB3006}|SimConnectWrapper\\SimConnectWrapper.csproj|solutionrelative:simconnectwrapper\\isimconnectwrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DB485A73-E205-43D0-851E-908E8FEB3006}|SimConnectWrapper\\SimConnectWrapper.csproj|c:\\users\\calib\\source\\repos\\msfsdeck\\simconnectwrapper\\simconnectwrapper\\simconnectwrapper.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -37,13 +37,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "DataTransferTypes.cs",
               "DocumentMoniker": "C:\\Users\\calib\\source\\repos\\msfsdeck\\SimConnectWrapper\\SimConnectWrapper\\DataTransferTypes.cs",
               "RelativeDocumentMoniker": "SimConnectWrapper\\DataTransferTypes.cs",
               "ToolTip": "C:\\Users\\calib\\source\\repos\\msfsdeck\\SimConnectWrapper\\SimConnectWrapper\\DataTransferTypes.cs",
               "RelativeToolTip": "SimConnectWrapper\\DataTransferTypes.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAwwG8AAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAANsAAAAAAAAAAAAmwMAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-18T20:21:59.596Z",
               "EditorCaption": ""
@@ -62,13 +62,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ISimConnectWrapper.cs",
               "DocumentMoniker": "C:\\Users\\calib\\source\\repos\\msfsdeck\\SimConnectWrapper\\SimConnectWrapper\\ISimConnectWrapper.cs",
               "RelativeDocumentMoniker": "SimConnectWrapper\\ISimConnectWrapper.cs",
               "ToolTip": "C:\\Users\\calib\\source\\repos\\msfsdeck\\SimConnectWrapper\\SimConnectWrapper\\ISimConnectWrapper.cs",
               "RelativeToolTip": "SimConnectWrapper\\ISimConnectWrapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-17T17:09:41.638Z",
               "EditorCaption": ""
@@ -93,7 +93,7 @@
               "RelativeDocumentMoniker": "SimConnectWrapper\\SimConnectWrapper.cs",
               "ToolTip": "C:\\Users\\calib\\source\\repos\\msfsdeck\\SimConnectWrapper\\SimConnectWrapper\\SimConnectWrapper.cs",
               "RelativeToolTip": "SimConnectWrapper\\SimConnectWrapper.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAwwDkAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-10T15:51:29.558Z",
               "EditorCaption": ""

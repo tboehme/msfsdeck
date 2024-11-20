@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimConnectWrapper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93a99698b02bf810eecc152d7cb03ce2900af668")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a852deba10a44d89b92ecc1880c20a34d397f1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimConnectWrapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimConnectWrapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

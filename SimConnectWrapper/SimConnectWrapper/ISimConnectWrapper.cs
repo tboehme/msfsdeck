@@ -13,7 +13,11 @@ namespace SimConnectWrapper
 
         void register(Enum eventName, string key);
 
-        Readers requestData();
+        string getString(string key);
+
+        long getLong(string key);
+
+        double getDouble(string key);
 
         void Disconnect(bool unloading = false);
     }

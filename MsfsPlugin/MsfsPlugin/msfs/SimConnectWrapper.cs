@@ -37,6 +37,8 @@
         public void send(Enum eventName, uint value) => simWrapper.InvokeMethod("send", [eventName, value]);
         public void register(Enum eventName, string key) => simWrapper.InvokeMethod("register", [eventName, key]);
         public bool IsConnected() => (bool)simWrapper.InvokeMethod("IsConnected");
-        public DataTransferTypes.Readers requestData() => (DataTransferTypes.Readers) simWrapper.InvokeMethod("requestData");
+        public string getString(string key) => (string)simWrapper.InvokeMethod("getString", [key]);
+        public long getLong(string key) => (long)simWrapper.InvokeMethod("getLong", [key]);
+        public double getDouble(string key) => (double)simWrapper.InvokeMethod("getDouble", [key]);
     }
 }
