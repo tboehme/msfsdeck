@@ -1,6 +1,7 @@
 ﻿namespace Loupedeck.MsfsPlugin.msfs
 {
     using System;
+    using Loupedeck.MsfsPlugin.tools;
 
     using static DataTransferTypes;
 
@@ -10,7 +11,8 @@
 
         public static void ReadMsfsValues(ISimConnectWrapper simConnectWrapper)
         {
-            MsfsData.Instance.AircraftName = simConnectWrapper.getString("title"); ;
+            MsfsData.Instance.AircraftName = simConnectWrapper.getString("title");
+            DebugTracing.Trace("Aircraft " + MsfsData.Instance.AircraftName);
 
             SetMsfsValue(BindingKeys.ENGINE_AUTO, simConnectWrapper.getLong("E1On"));
             SetMsfsValue(BindingKeys.AILERON_TRIM, (Int64)Math.Round(simConnectWrapper.getDouble("aileronTrim") * 100));
@@ -37,10 +39,10 @@
             SetMsfsValue(BindingKeys.GEAR_FRONT, (Int64)Math.Round(simConnectWrapper.getDouble("gearCenterPos") * 10));
             SetMsfsValue(BindingKeys.GEAR_LEFT, (Int64)Math.Round(simConnectWrapper.getDouble("gearLeftPos") * 10));
             SetMsfsValue(BindingKeys.GEAR_RIGHT, (Int64)Math.Round(simConnectWrapper.getDouble("gearRightPos") * 10));
-            SetMsfsValue(BindingKeys.FUEL_FLOW_GPH, (Int64)Math.Round(simConnectWrapper.getDouble("FuelGph")));
-            SetMsfsValue(BindingKeys.FUEL_FLOW_PPH, (Int64)Math.Round(simConnectWrapper.getDouble("FuelPph") * 100.0));
+            SetMsfsValue(BindingKeys.FUEL_FLOW_GPH, (Int64)Math.Round(simConnectWrapper.getDouble("E1GPH")) + (Int64)Math.Round(simConnectWrapper.getDouble("E2GPH"))+ (Int64)Math.Round(simConnectWrapper.getDouble("E3GPH"))+ (Int64)Math.Round(simConnectWrapper.getDouble("E4GPH")));
+            SetMsfsValue(BindingKeys.FUEL_FLOW_PPH, (Int64)Math.Round((simConnectWrapper.getDouble("E1PPH") + simConnectWrapper.getDouble("E1PPH") + simConnectWrapper.getDouble("E1PPH") + simConnectWrapper.getDouble("E1PPH")) * 100.0));
             SetMsfsValue(BindingKeys.FUEL_PERCENT, (Int64)Math.Round(simConnectWrapper.getLong("fuelQuantity") * 100.0 / simConnectWrapper.getLong("fuelCapacity")));
-            SetMsfsValue(BindingKeys.FUEL_TIME_LEFT, (Int64)(simConnectWrapper.getLong("fuelQuantity") / simConnectWrapper.getDouble("FuelGph") * 3600));
+            SetMsfsValue(BindingKeys.FUEL_TIME_LEFT, (Int64)(simConnectWrapper.getLong("fuelQuantity") / (1+(Int64)Math.Round(simConnectWrapper.getDouble("E1GPH")) + (Int64)Math.Round(simConnectWrapper.getDouble("E2GPH")) + (Int64)Math.Round(simConnectWrapper.getDouble("E3GPH")) + (Int64)Math.Round(simConnectWrapper.getDouble("E4GPH"))) * 3600));
             SetMsfsValue(BindingKeys.AP_NEXT_WP_ID, simConnectWrapper.getLong("wpID"));
             SetMsfsValue(BindingKeys.AP_NEXT_WP_DIST, (Int64)Math.Round(simConnectWrapper.getLong("wpDistance") * 0.00053996f * 10, 1));
             SetMsfsValue(BindingKeys.AP_NEXT_WP_ETE, simConnectWrapper.getLong("wpETE"));
@@ -48,7 +50,7 @@
             SetMsfsValue(BindingKeys.ENGINE_TYPE, simConnectWrapper.getLong("engineType"));
             SetMsfsValue(BindingKeys.ENGINE_NUMBER, simConnectWrapper.getLong("engineNumber"));
             SetMsfsValue(BindingKeys.E1RPM, simConnectWrapper.getLong("ENG1N1RPM"));
-            SetMsfsValue(BindingKeys.E2RPM, simConnectWrapper.getLong("ENG2N1RPM)"));
+            SetMsfsValue(BindingKeys.E2RPM, simConnectWrapper.getLong("ENG2N1RPM"));
             SetMsfsValue(BindingKeys.E3RPM, simConnectWrapper.getLong("ENG3N1RPM"));
             SetMsfsValue(BindingKeys.E4RPM, simConnectWrapper.getLong("ENG4N1RPM"));
             SetMsfsValue(BindingKeys.E1N1, PercentValue(simConnectWrapper.getDouble("E1N1")));

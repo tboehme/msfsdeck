@@ -119,6 +119,7 @@ namespace SimConnectWrapper
         public long getLong(string key) => (long)datas.GetType().GetField(key).GetValue(datas);
 
         public double getDouble(string key) => (double)datas.GetType().GetField(key).GetValue(datas);
+
   
         private void AddRequest()
         {

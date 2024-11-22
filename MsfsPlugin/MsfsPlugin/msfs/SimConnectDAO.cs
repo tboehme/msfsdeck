@@ -16,7 +16,7 @@
         public static SimConnectDAO Instance => lazy.Value;
 
 
-        private const double timerInterval = 200;
+        private const double timerInterval = 300;
         private enum DATA_REQUESTS
         {
             REQUEST_1
@@ -40,7 +40,7 @@
                     if (SimConnectWrapper.Instance.IsConnected())
                     {
                         connection.SetMsfsValue(1);
-                        //DataTransferIn.ReadMsfsValues(SimConnectWrapper.Instance.requestData());
+                        DataTransferIn.ReadMsfsValues(SimConnectWrapper.Instance);
                         DataTransferOut.SendEvents(SimConnectWrapper.Instance);
                         MsfsData.Instance.Changed();
                     }
